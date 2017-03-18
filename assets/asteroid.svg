@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+  <title>Asteroid</title>
+  <path transform="matrix(.77257 .63494 -.63494 .77257 29.035 4.8407)" d="m8.6524 47.53h13.233l-5.868-21.9-7.365 21.9z" fill="#666" fill-rule="evenodd" stroke="#333" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.125"/>
+  <path transform="translate(-4.0717 -1.2165e-7)" d="m35.628 16.738-3.3707-1.8712-3.3707-1.8712 3.3059-1.9835 3.3058-1.9834 0.0648 3.8546 0.0649 3.8547z" fill="#b3b3b3" fill-rule="evenodd" stroke="#333" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.875"/>
+  <path transform="translate(0,.25448)" d="m52.423 49.057-4.083-2.2234-4.083-2.2234 3.967-2.4242 3.967-2.4243 0.116 4.6476 0.116 4.6477z" fill="#b3b3b3" fill-rule="evenodd" stroke="#333" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.875"/>
+  <path transform="translate(0 1.7814)" d="m24.43 33.788 23.667-23.158" fill="none" stroke="#333" stroke-dasharray="1.875,3.75" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.875"/>
+  <path transform="translate(0,.25448)" d="m41.438 4.9688 4.3438 11.469 4.3438 11.5 7.7188-9.4375v-10.844l-4.2812-0.71875-12.125-1.9688z" fill="#b3b3b3" fill-rule="evenodd" stroke="#333" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.875"/>
+  <path transform="translate(0,.25448)" d="m13.594 4.0938-8.375 3.75-2.6875 1.1875v6.6562l1.75 1.2812 7.4375 5.375 0.9375-9.125 0.9375-9.125z" fill="#b3b3b3" fill-rule="evenodd" stroke="#333" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.875"/>
+</svg>

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <title>Play button</title>
+  <path d="M8,5V19l11-7Z" fill="#eceff1" opacity="0.9"/>
+  <path d="M0,0H24V24H0Z" fill="none"/>
+</svg>

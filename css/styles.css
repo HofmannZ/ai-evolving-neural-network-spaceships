@@ -1,0 +1,32 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+.space {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: rgb(33, 33, 33);
+}
+
+.planet {
+  position: absolute;
+  transform: translate(-50%, 50%);
+}
+
+.spaceship {
+  position: absolute;
+  transition: bottom 128ms linear, left 128ms linear, transform 128ms linear;
+  transform: translateX(-50%);
+}
+
+footer {
+  position: absolute;
+  right: 32px;
+  bottom: 24px;
+  margin: .5em 0;
+  font-weight: 300;
+  color: rgba(236, 239, 241, .9);
+}
