@@ -1,6 +1,7 @@
 body {
   margin: 0;
   padding: 0;
+  overflow: hidden;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
@@ -20,6 +21,36 @@ body {
   position: absolute;
   transition: bottom 128ms linear, left 128ms linear, transform 128ms linear;
   transform: translateX(-50%);
+}
+
+.hud {
+  position: absolute;
+  left: 32px;
+  bottom: 24px;
+}
+
+.hud__item {
+  color: rgba(236, 239, 241, .9);
+  font-weight: 300;
+  margin: .5em 0;
+}
+
+.hud__item.hud__item_complete {
+  color: rgb(76, 175, 80);
+}
+
+.play-button {
+  transition: all 256ms ease;
+  position: absolute;
+  bottom: 50vh;
+  left: 50vw;
+  transform: translate(-50%, 50%);
+  width: 64px;
+  height: 64px;
+}
+
+.play-button.play-button_hidden {
+  opacity: 0;
 }
 
 footer {
