@@ -1,1 +1,1 @@
-# ai-evolving-neural-network-spaceships
+# [WIP] AI evolving neural network spaceships
