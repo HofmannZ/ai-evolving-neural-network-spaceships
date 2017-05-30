@@ -103,29 +103,51 @@ class Sensor {
       const x = position.x + Math.sin(Math.PI / 180 * totalAngle) * i;
       const y = position.y + Math.cos(Math.PI / 180 * totalAngle) * i;
 
-      for (let i = 0; i < mission.asteroids.length; i++) {
-        if (x > mission.asteroids[i].position.x - mission.asteroids[i].width / 2
-            && x < mission.asteroids[i].position.x + mission.asteroids[i].width / 2
-            && y > mission.asteroids[i].position.y - mission.asteroids[i].height / 2
-            && y < mission.asteroids[i].position.y + mission.asteroids[i].height / 2
-        ) {
+      if (x > mission.target.position.x - mission.target.width / 2
+          && x < mission.target.position.x + mission.target.width / 2
+          && y > mission.target.position.y - mission.target.height / 2
+          && y < mission.target.position.y + mission.target.height / 2
+      ) {
 
-          let xOffset = mission.asteroids[i].position.x - x;
-          if (xOffset < 0) {
-            xOffset *= -1;
-          }
-
-          let yOffset = mission.asteroids[i].position.y - y;
-          if (yOffset < 0) {
-            yOffset *= -1;
-          }
-
-          // Calculate the distance based on the Pythagorean theorem.
-          let currentOffset = Math.sqrt(Math.pow(xOffset, 2) + Math.pow(yOffset, 2));
-
-          return currentOffset / this.range;
+        let xOffset = mission.target.position.x - x;
+        if (xOffset < 0) {
+          xOffset *= -1;
         }
+
+        let yOffset = mission.target.position.y - y;
+        if (yOffset < 0) {
+          yOffset *= -1;
+        }
+
+        // Calculate the distance based on the Pythagorean theorem.
+        let currentOffset = Math.sqrt(Math.pow(xOffset, 2) + Math.pow(yOffset, 2));
+
+        return currentOffset / this.range;
       }
+
+      // for (let i = 0; i < mission.asteroids.length; i++) {
+      //   if (x > mission.asteroids[i].position.x - mission.asteroids[i].width / 2
+      //       && x < mission.asteroids[i].position.x + mission.asteroids[i].width / 2
+      //       && y > mission.asteroids[i].position.y - mission.asteroids[i].height / 2
+      //       && y < mission.asteroids[i].position.y + mission.asteroids[i].height / 2
+      //   ) {
+      //
+      //     let xOffset = mission.asteroids[i].position.x - x;
+      //     if (xOffset < 0) {
+      //       xOffset *= -1;
+      //     }
+      //
+      //     let yOffset = mission.asteroids[i].position.y - y;
+      //     if (yOffset < 0) {
+      //       yOffset *= -1;
+      //     }
+      //
+      //     // Calculate the distance based on the Pythagorean theorem.
+      //     let currentOffset = Math.sqrt(Math.pow(xOffset, 2) + Math.pow(yOffset, 2));
+      //
+      //     return currentOffset / this.range;
+      //   }
+      // }
     }
     return 1;
   }
@@ -252,6 +274,18 @@ class Spaceship {
 
       // Calculate the distance to taget based on the Pythagorean theorem.
       let currentOffset = Math.sqrt(Math.pow(xOffset, 2) + Math.pow(yOffset, 2));
+
+      if (leftSensorData !== 1) {
+        console.log({ id: this.id, leftSensorData });
+      }
+
+      if (centerSensorData !== 1) {
+        console.log({ id: this.id, centerSensorData });
+      }
+
+      if (rightSensorData !== 1) {
+        console.log({ id: this.id, rightSensorData });
+      }
 
       // Get the engine thrusts from the neural network based on the sensor input.
       const [leftThrust, rightThrust] = this.neuralNetwork.network.activate([
@@ -476,6 +510,7 @@ class Population {
 
       // Mutate the new child based on the mutation probability.
       evolvedSpaceships[i].dna.mutate(this.mutationProbability);
+      evolvedSpaceships[i + 1].dna.mutate(this.mutationProbability);
     }
 
     // Ensure that the best spaceship returns to the new population.
