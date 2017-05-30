@@ -99,7 +99,7 @@ class Sensor {
   read(position, angle) {
     const totalAngle = this.angle + angle;
 
-    for (let i = 0; i < this.range; i += 8) {
+    for (let i = 0; i < this.range; i += 2) {
       const x = position.x + Math.sin(Math.PI / 180 * totalAngle) * i;
       const y = position.y + Math.cos(Math.PI / 180 * totalAngle) * i;
 
@@ -397,6 +397,7 @@ class Population {
     // Set the default values.
     this.averageFitness = 0;
     this.mutationProbability = 0;
+    this.minFitness = 0;
     this.maxFitness = 0;
 
     for (let i = 0; i < this.populationSize; i++) {
@@ -430,6 +431,9 @@ class Population {
     let totalFitness = 0;
     this.maxFitness = 0;
 
+    this.spaceships[0].calculateFitness();
+    this.minFitness = this.spaceships[0].fitness;
+
     // Evaluate the fitness of each spaceship in the population.
     for (i = 0; i < this.populationSize; i++) {
       this.spaceships[i].calculateFitness();
@@ -437,6 +441,10 @@ class Population {
       if (this.spaceships[i].fitness > this.maxFitness) {
         this.maxFitness = this.spaceships[i].fitness;
         this.fitestSpaceship = this.spaceships[i];
+      }
+
+      if (this.spaceships[i].fitness < this.minFitness) {
+        this.minFitness = this.spaceships[i].fitness;
       }
 
       totalFitness += this.spaceships[i].fitness;
@@ -451,7 +459,7 @@ class Population {
       this.spaceships[i].fitness *= 100;
     }
 
-    this.mutationProbability = (1 / (this.averageFitness / this.maxFitness * 100));
+    this.mutationProbability = (1 / (this.averageFitness / this.maxFitness * 1000));
   }
 
   pickParrent(i) {
@@ -575,6 +583,11 @@ class HUD {
       hud.appendChild(completed);
     }
 
+    const populationSize = document.createElement('p');
+    populationSize.classList.add('hud__item');
+    populationSize.innerHTML = `Population size: ${mission.populationSize}`;
+    hud.appendChild(populationSize);
+
     const lifeSpan = document.createElement('p');
     lifeSpan.classList.add('hud__item');
     lifeSpan.innerHTML = `Life span: ${mission.lifeSpan}`;
@@ -585,20 +598,20 @@ class HUD {
     populationCount.innerHTML = `Generation: ${mission.populationCount}`;
     hud.appendChild(populationCount);
 
+    const minFitness = document.createElement('p');
+    minFitness.classList.add('hud__item');
+    minFitness.innerHTML = `Lowest fitness: ${(mission.population.minFitness * 100).toFixed(3)}`;
+    hud.appendChild(minFitness);
+
+    const maxFitness = document.createElement('p');
+    maxFitness.classList.add('hud__item');
+    maxFitness.innerHTML = `Highest fitness: ${(mission.population.maxFitness * 100).toFixed(3)}`;
+    hud.appendChild(maxFitness);
+
     const averageFitness = document.createElement('p');
     averageFitness.classList.add('hud__item');
     averageFitness.innerHTML = `Average fitness: ${(mission.population.averageFitness * 100).toFixed(3)}`;
     hud.appendChild(averageFitness);
-
-    const maxFitness = document.createElement('p');
-    maxFitness.classList.add('hud__item');
-    maxFitness.innerHTML = `Current highest fitness: ${(mission.population.maxFitness * 100).toFixed(3)}`;
-    hud.appendChild(maxFitness);
-
-    const populationSize = document.createElement('p');
-    populationSize.classList.add('hud__item');
-    populationSize.innerHTML = `Population size: ${mission.populationSize} spaceships`;
-    hud.appendChild(populationSize);
 
     const crossoverProbability = document.createElement('p');
     crossoverProbability.classList.add('hud__item');
