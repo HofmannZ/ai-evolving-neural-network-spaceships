@@ -502,7 +502,7 @@ class Population {
         childrenDna[0]
       );
       evolvedSpaceships[i + 1] = new Spaceship(
-        i,
+        i + 1,
         mission.startingPosition.x,
         mission.startingPosition.y,
         childrenDna[1]
