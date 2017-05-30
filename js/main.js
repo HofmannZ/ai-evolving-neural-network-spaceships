@@ -508,7 +508,7 @@ class Population {
         childrenDna[1]
       );
 
-      // Mutate the new child based on the mutation probability.
+      // Mutate the new children based on their mutation probability.
       evolvedSpaceships[i].dna.mutate(this.mutationProbability);
       evolvedSpaceships[i + 1].dna.mutate(this.mutationProbability);
     }
